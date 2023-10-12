@@ -12,7 +12,11 @@ public class UsuarioS {
     @Autowired
     private UsuarioR repositorio;
 
-    public List<UsuarioM> get(){
+    public List<UsuarioM> obtenerTodos(){
         return repositorio.findAll();
+    }
+
+    public UsuarioM encontrarXnombreUsuario(String nombre_usuario){
+        return repositorio.findByNombreUsuario(nombre_usuario);
     }
 }

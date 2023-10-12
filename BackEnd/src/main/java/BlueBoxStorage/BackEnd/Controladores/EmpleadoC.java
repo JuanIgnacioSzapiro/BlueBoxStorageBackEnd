@@ -3,12 +3,12 @@ package BlueBoxStorage.BackEnd.Controladores;
 import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
 import BlueBoxStorage.BackEnd.Servicios.EmpleadoS;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class EmpleadoC {
     @Autowired
     EmpleadoS servicio;
