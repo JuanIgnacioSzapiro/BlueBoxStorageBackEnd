@@ -13,7 +13,7 @@ public class EmpleadoC {
     @Autowired
     EmpleadoS servicio;
 
-    @GetMapping("/listar_epleados")
+    @GetMapping("/listar_empleados")
     public List<EmpleadoM> get(){
         return servicio.get();
     }
