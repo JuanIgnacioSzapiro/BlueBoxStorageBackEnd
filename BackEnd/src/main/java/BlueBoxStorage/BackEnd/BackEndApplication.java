@@ -1,9 +1,9 @@
 package BlueBoxStorage.BackEnd;
 
-import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
 import BlueBoxStorage.BackEnd.Modelos.RolM;
-import BlueBoxStorage.BackEnd.Repositorios.EmpleadoR;
+import BlueBoxStorage.BackEnd.Modelos.UsuarioNoAbstract;
 import BlueBoxStorage.BackEnd.Repositorios.RolR;
+import BlueBoxStorage.BackEnd.Repositorios.UsuarioR;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +20,7 @@ public class BackEndApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(RolR rolR, EmpleadoR empleadoR) {
+	CommandLineRunner runner(RolR rolR, UsuarioR usuarioR) {
 		return args -> {
 			if (rolR.findByAutoridad("ADMINISTRADOR").isPresent()) return;
 
@@ -33,9 +33,20 @@ public class BackEndApplication {
 			roles.add(empleado);
 			roles.add(administrador);
 
-			EmpleadoM administradorCentral = new EmpleadoM(0L, "admin", "admin", roles);
+			UsuarioNoAbstract administradorCentral = new UsuarioNoAbstract(0L, "admin", "admin", roles);
 
-			empleadoR.save(administradorCentral);
+			usuarioR.save(administradorCentral);
 		};
 	}
+/*
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
+			}
+		};
+	}
+	*/
 }

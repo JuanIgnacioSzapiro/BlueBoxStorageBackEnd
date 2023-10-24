@@ -56,6 +56,11 @@ public abstract class UsuarioM {
         autoridades = new HashSet<>();
     }
 
+    public UsuarioM(String nombreUsuario, String claveUsuario) {
+        this.nombreUsuario = nombreUsuario;
+        this.claveUsuario = claveUsuario;
+    }
+
     public UsuarioM(Long idUsuario, String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
