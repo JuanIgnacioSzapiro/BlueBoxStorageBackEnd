@@ -35,6 +35,10 @@ public class EmpleadoM extends UsuarioM{
         setAutoridades(new HashSet<>());
     }
 
+    public EmpleadoM(String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
+        super(nombreUsuario, claveUsuario, autoridades);
+    }
+
     public EmpleadoM(Long idUsuario, String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
         super(idUsuario, nombreUsuario, claveUsuario, autoridades);
     }

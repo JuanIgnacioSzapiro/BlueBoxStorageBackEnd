@@ -13,6 +13,10 @@ public class UsuarioNoAbstract extends UsuarioM{
         super(nombreUsuario, claveUsuario);
     }
 
+    public UsuarioNoAbstract(String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
+        super(nombreUsuario, claveUsuario, autoridades);
+    }
+
     public UsuarioNoAbstract(Long idUsuario, String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
         super(idUsuario, nombreUsuario, claveUsuario, autoridades);
     }

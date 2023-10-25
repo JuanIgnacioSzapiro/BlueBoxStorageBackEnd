@@ -17,6 +17,8 @@ public class UsuarioC {
 
     @GetMapping("/listar_usuarios")
     public List<UsuarioNoAbstract> get(){
+        //System.out.println("\ngetNombreUsuario: "+servicio.obtenerTodos().get(0).getNombreUsuario());
+        //System.out.println("\ngetClaveUsuario: "+servicio.obtenerTodos().get(0).getClaveUsuario());
         return servicio.obtenerTodos();
     }
 

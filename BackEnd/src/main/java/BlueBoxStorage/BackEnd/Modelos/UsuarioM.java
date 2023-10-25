@@ -30,7 +30,7 @@ public abstract class UsuarioM {
     @Setter
     private String telefono;
 
-    @Column (length = 20, unique = true)
+    @Column (length = 20)
     @Getter
     @Setter
     private String nombreUsuario;
@@ -54,6 +54,12 @@ public abstract class UsuarioM {
     public UsuarioM() {
         super();
         autoridades = new HashSet<>();
+    }
+
+    public UsuarioM(String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
+        this.nombreUsuario = nombreUsuario;
+        this.claveUsuario = claveUsuario;
+        this.autoridades = autoridades;
     }
 
     public UsuarioM(String nombreUsuario, String claveUsuario) {

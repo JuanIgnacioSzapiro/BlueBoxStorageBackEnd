@@ -25,6 +25,10 @@ public class ClienteM extends UsuarioM{
         setAutoridades(new HashSet<>());
     }
 
+    public ClienteM(String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
+        super(nombreUsuario, claveUsuario, autoridades);
+    }
+
     public ClienteM(Long idUsuario, String nombre, String direccion, String telefono, String nombreUsuario, String claveUsuario, Set<RolM> autoridades, String dni, String mail) {
         super(idUsuario, nombre, direccion, telefono, nombreUsuario, claveUsuario, autoridades);
         this.dni = dni;

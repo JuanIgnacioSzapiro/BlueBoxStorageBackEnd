@@ -1,7 +1,9 @@
 package BlueBoxStorage.BackEnd;
 
+import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
 import BlueBoxStorage.BackEnd.Modelos.RolM;
 import BlueBoxStorage.BackEnd.Modelos.UsuarioNoAbstract;
+import BlueBoxStorage.BackEnd.Repositorios.EmpleadoR;
 import BlueBoxStorage.BackEnd.Repositorios.RolR;
 import BlueBoxStorage.BackEnd.Repositorios.UsuarioR;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +22,7 @@ public class BackEndApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(RolR rolR, UsuarioR usuarioR) {
+	CommandLineRunner runner(RolR rolR, UsuarioR usuarioR, EmpleadoR empleadoR) {
 		return args -> {
 			if (rolR.findByAutoridad("ADMINISTRADOR").isPresent()) return;
 
@@ -33,9 +35,11 @@ public class BackEndApplication {
 			roles.add(empleado);
 			roles.add(administrador);
 
-			UsuarioNoAbstract administradorCentral = new UsuarioNoAbstract(0L, "admin", "admin", roles);
+			UsuarioNoAbstract administradorCentralU = new UsuarioNoAbstract("admin", "admin", roles);
+			EmpleadoM administradorCentralE = new EmpleadoM("admin", "admin", roles);
 
-			usuarioR.save(administradorCentral);
+			usuarioR.save(administradorCentralU);
+			empleadoR.save(administradorCentralE);
 		};
 	}
 /*
