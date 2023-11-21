@@ -13,22 +13,22 @@ public class EmpleadoC {
     @Autowired
     EmpleadoS servicio;
 
-    @GetMapping("/listar_empleados")
+    @GetMapping("/empleados")
     public List<EmpleadoM> get(){
         return servicio.get();
     }
 
-    @PostMapping("/guardar_empleado")
+    @PostMapping("/empleados")
     public void post(@RequestBody EmpleadoM cuerpo){
         servicio.set(cuerpo);
     }
 
-    @PutMapping("/editar_empleado/{id}")
+    @PutMapping("/empleados/{id}")
     public void put(@PathVariable Long id, @RequestBody EmpleadoM cuerpo){
         servicio.update(id, cuerpo);
     }
 
-    @DeleteMapping("/borrar_empleado/{id}")
+    @DeleteMapping("/empleados/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
     }

@@ -13,22 +13,22 @@ public class RolC {
     @Autowired
     RolS servicio;
 
-    @GetMapping("/listar_roles")
+    @GetMapping("/roles")
     public List<RolM> get(){
         return servicio.get();
     }
 
-    @PostMapping("/guardar_roles")
+    @PostMapping("/roles")
     public void post(@RequestBody RolM cuerpo){
         servicio.set(cuerpo);
     }
 
-    @PutMapping("/editar_rol/{id}")
+    @PutMapping("/roles/{id}")
     public void put(@PathVariable Long id, @RequestBody RolM cuerpo){
         servicio.update(id, cuerpo);
     }
 
-    @DeleteMapping("/borrar_rol/{id}")
+    @DeleteMapping("/roles/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
     }

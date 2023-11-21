@@ -13,22 +13,22 @@ public class ZonaC {
     @Autowired
     ZonaS servicio;
 
-    @GetMapping("/listar_zonas")
+    @GetMapping("/zonas")
     public List<ZonaM> get(){
         return servicio.get();
     }
 
-    @PostMapping("/guardar_zona")
+    @PostMapping("/zonas")
     public void post(@RequestBody ZonaM cuerpo){
         servicio.set(cuerpo);
     }
 
-    @PutMapping("/editar_zona/{id}")
+    @PutMapping("/zonas/{id}")
     public void put(@PathVariable Long id, @RequestBody ZonaM cuerpo){
         servicio.update(id, cuerpo);
     }
 
-    @DeleteMapping("/borrar_zona/{id}")
+    @DeleteMapping("/zonas/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
     }

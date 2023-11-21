@@ -13,22 +13,22 @@ public class DepositoC {
     @Autowired
     DepositoS servicio;
 
-    @GetMapping("/listar_depositos")
+    @GetMapping("/depositos")
     public List<DepositoM> get(){
         return servicio.get();
     }
 
-    @PostMapping("/guardar_deposito")
+    @PostMapping("/depositos")
     public void post(@RequestBody DepositoM cuerpo){
         servicio.set(cuerpo);
     }
 
-    @PutMapping("/editar_deposito/{id}")
+    @PutMapping("/depositos/{id}")
     public void put(@PathVariable Long id, @RequestBody DepositoM cuerpo){
         servicio.update(id, cuerpo);
     }
 
-    @DeleteMapping("/borrar_deposito/{id}")
+    @DeleteMapping("/depositos/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
     }

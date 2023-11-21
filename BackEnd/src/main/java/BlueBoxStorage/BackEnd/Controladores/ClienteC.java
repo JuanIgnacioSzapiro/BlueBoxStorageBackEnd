@@ -14,22 +14,22 @@ public class ClienteC {
     @Autowired
     ClienteS servicio;
 
-    @GetMapping("/listar_clientes")
+    @GetMapping("/clientes")
     public List<ClienteM> get(){
         return servicio.get();
     }
 
-    @PostMapping("/guardar_cliente")
+    @PostMapping("/clientes")
     public void post(@RequestBody ClienteM cuerpo){
         servicio.set(cuerpo);
     }
 
-    @PutMapping("/editar_cliente/{id}")
+    @PutMapping("/clientes/{id}")
     public void put(@PathVariable Long id, @RequestBody ClienteM cuerpo){
         servicio.update(id, cuerpo);
     }
 
-    @DeleteMapping("/borrar_cliente/{id}")
+    @DeleteMapping("/clientes/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
     }

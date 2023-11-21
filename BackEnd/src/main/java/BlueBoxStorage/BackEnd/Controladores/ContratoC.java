@@ -14,22 +14,22 @@ public class ContratoC {
     @Autowired
     ContratoS servicio;
 
-    @GetMapping("/listar_contratos")
+    @GetMapping("/contratos")
     public List<ContratoM> get(){
         return servicio.get();
     }
 
-    @PostMapping("/guardar_contrato")
+    @PostMapping("/contratos")
     public void post(@RequestBody ContratoM cuerpo){
         servicio.set(cuerpo);
     }
 
-    @PutMapping("/editar_contrato/{id}")
+    @PutMapping("/contratos/{id}")
     public void put(@PathVariable Long id, @RequestBody ContratoM cuerpo){
         servicio.update(id, cuerpo);
     }
 
-    @DeleteMapping("/borrar_contrato/{id}")
+    @DeleteMapping("/contratos/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
     }

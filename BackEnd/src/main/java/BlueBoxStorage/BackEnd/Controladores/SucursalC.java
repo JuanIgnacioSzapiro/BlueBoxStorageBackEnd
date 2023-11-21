@@ -13,22 +13,22 @@ public class SucursalC {
     @Autowired
     SucursalS servicio;
 
-    @GetMapping("/listar_sucursales")
+    @GetMapping("/sucursales")
     public List<SucursalM> get(){
         return servicio.get();
     }
 
-    @PostMapping("/guardar_sucursal")
+    @PostMapping("/sucursales")
     public void post(@RequestBody SucursalM cuerpo){
         servicio.set(cuerpo);
     }
 
-    @PutMapping("/editar_sucursal/{id}")
+    @PutMapping("/sucursales/{id}")
     public void put(@PathVariable Long id, @RequestBody SucursalM cuerpo){
         servicio.update(id, cuerpo);
     }
 
-    @DeleteMapping("/borrar_sucursal/{id}")
+    @DeleteMapping("/sucursales/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
     }
