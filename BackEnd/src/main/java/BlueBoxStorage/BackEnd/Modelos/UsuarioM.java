@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity(name = "usuario")
 public abstract class UsuarioM {
     @Id
@@ -40,26 +37,12 @@ public abstract class UsuarioM {
     @Setter
     private String claveUsuario;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "usuario_rol",
-            joinColumns = {@JoinColumn(name = "idUsuario")},
-            inverseJoinColumns = {@JoinColumn(name = "idRol")}
-    )
-    @Column (length = 20)
-    @Getter
-    @Setter
-    private Set<RolM> autoridades;
-
-    public UsuarioM() {
-        super();
-        autoridades = new HashSet<>();
-    }
-
-    public UsuarioM(String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
+    public UsuarioM(String nombre, String direccion, String telefono, String nombreUsuario, String claveUsuario) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
         this.nombreUsuario = nombreUsuario;
         this.claveUsuario = claveUsuario;
-        this.autoridades = autoridades;
     }
 
     public UsuarioM(String nombreUsuario, String claveUsuario) {
@@ -67,20 +50,6 @@ public abstract class UsuarioM {
         this.claveUsuario = claveUsuario;
     }
 
-    public UsuarioM(Long idUsuario, String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
-        this.idUsuario = idUsuario;
-        this.nombreUsuario = nombreUsuario;
-        this.claveUsuario = claveUsuario;
-        this.autoridades = autoridades;
-    }
-
-    public UsuarioM(Long idUsuario, String nombre, String direccion, String telefono, String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.nombreUsuario = nombreUsuario;
-        this.claveUsuario = claveUsuario;
-        this.autoridades = autoridades;
+    public UsuarioM() {
     }
 }

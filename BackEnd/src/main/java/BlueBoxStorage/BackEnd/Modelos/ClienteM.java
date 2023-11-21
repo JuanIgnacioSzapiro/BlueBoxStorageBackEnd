@@ -20,18 +20,24 @@ public class ClienteM extends UsuarioM{
     @Setter
     private String mail;
 
-    public ClienteM() {
-        super();
-        setAutoridades(new HashSet<>());
-    }
+    @Column
+    @Getter
+    @Setter
+    private boolean cliente;
 
-    public ClienteM(String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
-        super(nombreUsuario, claveUsuario, autoridades);
-    }
+    @Column
+    @Getter
+    @Setter
+    private boolean pendiente;
 
-    public ClienteM(Long idUsuario, String nombre, String direccion, String telefono, String nombreUsuario, String claveUsuario, Set<RolM> autoridades, String dni, String mail) {
-        super(idUsuario, nombre, direccion, telefono, nombreUsuario, claveUsuario, autoridades);
+    public ClienteM(String nombre, String direccion, String telefono, String nombreUsuario, String claveUsuario, String dni, String mail, boolean cliente, boolean pendiente) {
+        super(nombre, direccion, telefono, nombreUsuario, claveUsuario);
         this.dni = dni;
         this.mail = mail;
+        this.cliente = cliente;
+        this.pendiente = pendiente;
+    }
+
+    public ClienteM() {
     }
 }

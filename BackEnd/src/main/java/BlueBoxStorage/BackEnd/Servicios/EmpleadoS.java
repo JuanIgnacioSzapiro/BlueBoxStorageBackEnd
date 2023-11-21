@@ -1,9 +1,7 @@
 package BlueBoxStorage.BackEnd.Servicios;
 
 import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
-import BlueBoxStorage.BackEnd.Modelos.RolM;
 import BlueBoxStorage.BackEnd.Repositorios.EmpleadoR;
-import BlueBoxStorage.BackEnd.Repositorios.RolR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,27 +16,19 @@ public class EmpleadoS {
     @Autowired
     private EmpleadoR repositorio;
 
-    @Autowired
-    private RolR rolR;
-
-
     public List<EmpleadoM> get(){
         return repositorio.findAll();
     }
 
     public void set(@RequestBody EmpleadoM modelo){
-        RolM rolM = rolR.findByAutoridad("EMPLEADO").get();
-
-        Set<RolM> autoridades = new HashSet<>();
-        autoridades.add(rolM);
-
         EmpleadoM actualizado = new EmpleadoM();
         actualizado.setNombre(modelo.getNombre());
         actualizado.setDireccion(modelo.getDireccion());
         actualizado.setTelefono(modelo.getTelefono());
         actualizado.setNombreUsuario(modelo.getNombreUsuario());
         actualizado.setClaveUsuario(modelo.getClaveUsuario());
-        actualizado.setAutoridades(autoridades);
+        actualizado.isAdministrador();
+        actualizado.isEmpleado();
         actualizado.setCodigo(modelo.getCodigo());
         actualizado.setEspecialidad(modelo.getEspecialidad());
         repositorio.save(actualizado);
@@ -51,7 +41,8 @@ public class EmpleadoS {
         actualizado.setTelefono(modelo.getTelefono());
         actualizado.setNombreUsuario(modelo.getNombreUsuario());
         actualizado.setClaveUsuario(modelo.getClaveUsuario());
-        actualizado.setAutoridades(modelo.getAutoridades());
+        actualizado.isAdministrador();
+        actualizado.isEmpleado();
         actualizado.setCodigo(modelo.getCodigo());
         actualizado.setEspecialidad(modelo.getEspecialidad());
         repositorio.save(actualizado);

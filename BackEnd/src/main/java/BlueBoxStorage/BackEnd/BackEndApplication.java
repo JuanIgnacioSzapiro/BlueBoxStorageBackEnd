@@ -1,10 +1,8 @@
 package BlueBoxStorage.BackEnd;
 
 import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
-import BlueBoxStorage.BackEnd.Modelos.RolM;
 import BlueBoxStorage.BackEnd.Modelos.UsuarioNoAbstract;
 import BlueBoxStorage.BackEnd.Repositorios.EmpleadoR;
-import BlueBoxStorage.BackEnd.Repositorios.RolR;
 import BlueBoxStorage.BackEnd.Repositorios.UsuarioR;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,21 +20,12 @@ public class BackEndApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(RolR rolR, UsuarioR usuarioR, EmpleadoR empleadoR) {
+	CommandLineRunner runner(UsuarioR usuarioR, EmpleadoR empleadoR) {
 		return args -> {
-			if (rolR.findByAutoridad("ADMINISTRADOR").isPresent()) return;
+			if (empleadoR.findByAdministrador(false).isPresent()) return;
 
-			RolM administrador = rolR.save(new RolM("ADMINISTRADOR"));
-			RolM empleado = rolR.save(new RolM("EMPLEADO"));
-			RolM cliente = rolR.save(new RolM("CLIENTE"));
-			RolM pendiente = rolR.save(new RolM("PENDIENTE"));
-
-			Set<RolM> roles = new HashSet<>();
-			roles.add(empleado);
-			roles.add(administrador);
-
-			UsuarioNoAbstract administradorCentralU = new UsuarioNoAbstract("admin", "admin", roles);
-			EmpleadoM administradorCentralE = new EmpleadoM("admin", "admin", roles);
+			UsuarioNoAbstract administradorCentralU = new UsuarioNoAbstract("admin", "admin");
+			EmpleadoM administradorCentralE = new EmpleadoM("admin", "admin", true, true);
 
 			usuarioR.save(administradorCentralU);
 			empleadoR.save(administradorCentralE);

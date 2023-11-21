@@ -30,23 +30,31 @@ public class EmpleadoM extends UsuarioM{
     @Setter
     private Set<DepositoM> depositos;
 
-    public EmpleadoM() {
-        super();
-        setAutoridades(new HashSet<>());
-    }
+    @Column
+    @Getter
+    @Setter
+    private boolean administrador;
 
-    public EmpleadoM(String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
-        super(nombreUsuario, claveUsuario, autoridades);
-    }
+    @Column
+    @Getter
+    @Setter
+    private boolean empleado;
 
-    public EmpleadoM(Long idUsuario, String nombreUsuario, String claveUsuario, Set<RolM> autoridades) {
-        super(idUsuario, nombreUsuario, claveUsuario, autoridades);
-    }
-
-    public EmpleadoM(Long idUsuario, String nombre, String direccion, String telefono, String nombreUsuario, String claveUsuario, Set<RolM> autoridades, String codigo, String especialidad, Set<DepositoM> depositos) {
-        super(idUsuario, nombre, direccion, telefono, nombreUsuario, claveUsuario, autoridades);
+    public EmpleadoM(String nombre, String direccion, String telefono, String nombreUsuario, String claveUsuario, String codigo, String especialidad, Set<DepositoM> depositos, boolean administrador, boolean empleado) {
+        super(nombre, direccion, telefono, nombreUsuario, claveUsuario);
         this.codigo = codigo;
         this.especialidad = especialidad;
         this.depositos = depositos;
+        this.administrador = administrador;
+        this.empleado = empleado;
+    }
+
+    public EmpleadoM(String nombreUsuario, String claveUsuario, boolean administrador, boolean empleado) {
+        super(nombreUsuario, claveUsuario);
+        this.administrador = administrador;
+        this.empleado = empleado;
+    }
+
+    public EmpleadoM() {
     }
 }

@@ -1,9 +1,6 @@
 package BlueBoxStorage.BackEnd.Servicios;
 
-import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
-import BlueBoxStorage.BackEnd.Modelos.RolM;
 import BlueBoxStorage.BackEnd.Modelos.UsuarioNoAbstract;
-import BlueBoxStorage.BackEnd.Repositorios.RolR;
 import BlueBoxStorage.BackEnd.Repositorios.UsuarioR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,26 +16,17 @@ public class UsuarioS {
     @Autowired
     private UsuarioR repositorio;
 
-    @Autowired
-    private RolR rolR;
-
     public List<UsuarioNoAbstract> get(){
         return repositorio.findAll();
     }
 
     public void set(@RequestBody UsuarioNoAbstract modelo){
-        RolM rolM = rolR.findByAutoridad(modelo.getAutoridades().toString()).get();
-
-        Set<RolM> autoridades = new HashSet<>();
-        autoridades.add(rolM);
-
         UsuarioNoAbstract actualizado = new UsuarioNoAbstract();
         actualizado.setNombre(modelo.getNombre());
         actualizado.setDireccion(modelo.getDireccion());
         actualizado.setTelefono(modelo.getTelefono());
         actualizado.setNombreUsuario(modelo.getNombreUsuario());
         actualizado.setClaveUsuario(modelo.getClaveUsuario());
-        actualizado.setAutoridades(autoridades);
         repositorio.save(actualizado);
     }
 
@@ -49,7 +37,6 @@ public class UsuarioS {
         actualizado.setTelefono(modelo.getTelefono());
         actualizado.setNombreUsuario(modelo.getNombreUsuario());
         actualizado.setClaveUsuario(modelo.getClaveUsuario());
-        actualizado.setAutoridades(modelo.getAutoridades());
         repositorio.save(actualizado);
     }
 

@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface EmpleadoR extends JpaRepository<EmpleadoM, Long>{
     Optional<EmpleadoM> findByNombreUsuario(String nombre_usuario);
+
+    Optional<EmpleadoM> findByAdministrador(boolean administrador);
 }
