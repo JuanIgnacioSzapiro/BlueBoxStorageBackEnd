@@ -1,6 +1,7 @@
 package BlueBoxStorage.BackEnd.Servicios;
 
 import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
+import BlueBoxStorage.BackEnd.Modelos.UsuarioNoAbstract;
 import BlueBoxStorage.BackEnd.Repositorios.EmpleadoR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,9 @@ public class EmpleadoS {
 
     public void delete(@PathVariable Long id){
         repositorio.deleteById(id);
+    }
+
+    public EmpleadoM encontrarXnombreUsuarioEmpleado(String nombre_usuario){
+        return repositorio.findByNombreUsuario(nombre_usuario);
     }
 }
