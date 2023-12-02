@@ -23,15 +23,4 @@ public class SucursalM {
     @Getter
     @Setter
     private String telefono;
-
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "sucursal_zonas",
-            joinColumns = {@JoinColumn(name = "idSucursal")},
-            inverseJoinColumns = {@JoinColumn(name = "idZona")}
-    )
-    @Column (length = 20)
-    @Getter
-    @Setter
-    private Set<ZonaM> zonas;
 }

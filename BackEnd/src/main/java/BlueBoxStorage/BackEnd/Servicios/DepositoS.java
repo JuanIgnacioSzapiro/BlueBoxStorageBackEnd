@@ -1,6 +1,7 @@
 package BlueBoxStorage.BackEnd.Servicios;
 
 import BlueBoxStorage.BackEnd.Modelos.DepositoM;
+import BlueBoxStorage.BackEnd.Modelos.ZonaM;
 import BlueBoxStorage.BackEnd.Repositorios.DepositoR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,9 @@ public class DepositoS {
 
     public void delete(@PathVariable Long id){
         repositorio.deleteById(id);
+    }
+
+    public List<DepositoM> encontrarDepositosXIdZona(Long id) {
+        return repositorio.encontrarDepositosXIdZona(id);
     }
 }

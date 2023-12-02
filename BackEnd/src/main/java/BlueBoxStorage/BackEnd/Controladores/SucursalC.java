@@ -1,14 +1,15 @@
 package BlueBoxStorage.BackEnd.Controladores;
 
 import BlueBoxStorage.BackEnd.Modelos.SucursalM;
+import BlueBoxStorage.BackEnd.Modelos.ZonaM;
 import BlueBoxStorage.BackEnd.Servicios.SucursalS;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class SucursalC {
     @Autowired
     SucursalS servicio;

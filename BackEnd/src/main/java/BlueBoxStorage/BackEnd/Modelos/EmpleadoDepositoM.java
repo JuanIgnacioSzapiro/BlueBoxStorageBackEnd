@@ -4,23 +4,21 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
-
-@Entity(name = "zona")
-public class ZonaM {
+@Entity(name = "empleado_deposito")
+public class EmpleadoDepositoM {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private Long idZona;
+    private Long idEmpleadoDeposito;
 
-    @Column
     @Getter
     @Setter
-    private char letra;
+    @Column(name = "idUsuario")
+    private Long idUsuario;
 
-    @Column(length = 20)
     @Getter
     @Setter
-    private String tipo;
+    @Column(name = "idDeposito")
+    private Long idDeposito;
 }

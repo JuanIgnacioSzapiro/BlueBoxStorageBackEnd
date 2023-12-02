@@ -17,7 +17,7 @@ public class BackEndApplication {
 	@Bean
 	CommandLineRunner runner(EmpleadoR empleadoR) {
 		return args -> {
-			if (empleadoR.findByAdministrador(true).isPresent()) return;
+			if (empleadoR.findByIdUsuario(Long.valueOf(1)).isPresent()) return;
 
 			EmpleadoM administradorCentralE = new EmpleadoM("admin", "admin", true, true);
 

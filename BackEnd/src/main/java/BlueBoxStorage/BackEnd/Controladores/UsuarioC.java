@@ -21,7 +21,7 @@ public class UsuarioC {
     @Autowired
     ClienteS servicioC;
 
-    @GetMapping("/usuarios")
+    /*@GetMapping("/usuarios")
     public List<UsuarioNoAbstract> get(){
         UsuarioNoAbstract usuarioNoAbstract = new UsuarioNoAbstract();
         List<UsuarioNoAbstract> totalUsuario = new ArrayList<>();
@@ -30,25 +30,34 @@ public class UsuarioC {
         totalClientes.addAll(servicioC.get());
         totalEmpleados.addAll(servicioE.get());
         totalClientes.forEach(cliente->{
-            usuarioNoAbstract.setIdUsuario(cliente.getIdUsuario());
-            usuarioNoAbstract.setClaveUsuario(cliente.getClaveUsuario());
-            usuarioNoAbstract.setNombreUsuario(cliente.getNombreUsuario());
-            usuarioNoAbstract.setNombre(cliente.getNombre());
-            usuarioNoAbstract.setDireccion(cliente.getDireccion());
-            usuarioNoAbstract.setTelefono(cliente.getTelefono());
-            totalUsuario.add(usuarioNoAbstract);
+            if(cliente.getIdUsuario()!=null){
+                usuarioNoAbstract.setIdUsuario(cliente.getIdUsuario());
+                usuarioNoAbstract.setClaveUsuario(cliente.getClaveUsuario());
+                usuarioNoAbstract.setNombreUsuario(cliente.getNombreUsuario());
+                usuarioNoAbstract.setNombre(cliente.getNombre());
+                usuarioNoAbstract.setDireccion(cliente.getDireccion());
+                usuarioNoAbstract.setTelefono(cliente.getTelefono());
+                totalUsuario.add(usuarioNoAbstract);
+            }
         });
         totalEmpleados.forEach(empleado->{
-            usuarioNoAbstract.setIdUsuario(empleado.getIdUsuario());
-            usuarioNoAbstract.setClaveUsuario(empleado.getClaveUsuario());
-            usuarioNoAbstract.setNombreUsuario(empleado.getNombreUsuario());
-            usuarioNoAbstract.setNombre(empleado.getNombre());
-            usuarioNoAbstract.setDireccion(empleado.getDireccion());
-            usuarioNoAbstract.setTelefono(empleado.getTelefono());
-            totalUsuario.add(usuarioNoAbstract);
+            if(empleado.getIdUsuario()!=null){
+                usuarioNoAbstract.setIdUsuario(empleado.getIdUsuario());
+                usuarioNoAbstract.setClaveUsuario(empleado.getClaveUsuario());
+                usuarioNoAbstract.setNombreUsuario(empleado.getNombreUsuario());
+                usuarioNoAbstract.setNombre(empleado.getNombre());
+                usuarioNoAbstract.setDireccion(empleado.getDireccion());
+                usuarioNoAbstract.setTelefono(empleado.getTelefono());
+                totalUsuario.add(usuarioNoAbstract);
+            }
+            System.out.println("empleado: "+empleado.getIdUsuario());
+            totalUsuario.forEach(tot->{
+                System.out.println("\ttotalUsuario: "+tot.getIdUsuario());
+            });
         });
+
         return totalUsuario;
-    }
+    }*/
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UsuarioNoAbstract usuarioBuscado){

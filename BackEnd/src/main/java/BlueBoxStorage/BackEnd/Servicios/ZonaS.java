@@ -32,4 +32,8 @@ public class ZonaS {
     public void delete(@PathVariable Long id){
         repositorio.deleteById(id);
     }
+
+    public List<ZonaM> encontrarZonasXIdSucursal(@PathVariable Long id){
+        return repositorio.encontrarZonasXIdSucursal(id);
+    }
 }

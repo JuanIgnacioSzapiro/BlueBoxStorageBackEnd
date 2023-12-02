@@ -28,8 +28,8 @@ public class EmpleadoS {
         actualizado.setTelefono(modelo.getTelefono());
         actualizado.setNombreUsuario(modelo.getNombreUsuario());
         actualizado.setClaveUsuario(modelo.getClaveUsuario());
-        actualizado.isAdministrador();
-        actualizado.isEmpleado();
+        actualizado.setAdministrador(modelo.isAdministrador());
+        actualizado.setEmpleado(modelo.isEmpleado());
         actualizado.setCodigo(modelo.getCodigo());
         actualizado.setEspecialidad(modelo.getEspecialidad());
         repositorio.save(actualizado);
@@ -42,8 +42,8 @@ public class EmpleadoS {
         actualizado.setTelefono(modelo.getTelefono());
         actualizado.setNombreUsuario(modelo.getNombreUsuario());
         actualizado.setClaveUsuario(modelo.getClaveUsuario());
-        actualizado.isAdministrador();
-        actualizado.isEmpleado();
+        actualizado.setAdministrador(modelo.isAdministrador());
+        actualizado.setEmpleado(modelo.isEmpleado());
         actualizado.setCodigo(modelo.getCodigo());
         actualizado.setEspecialidad(modelo.getEspecialidad());
         repositorio.save(actualizado);

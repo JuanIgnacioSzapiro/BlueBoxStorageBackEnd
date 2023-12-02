@@ -24,14 +24,14 @@ public class ContratoM {
     @Setter
     private DateFormat fechaTerminacion;
 
-    @Column
     @Getter
     @Setter
-    private Long idCliente;
+    @Column(name = "idUsuario")
+    private Long idUsuario;
 
-    @Column
     @Getter
     @Setter
+    @Column(name = "idDeposito")
     private Long idDeposito;
 
     @Column

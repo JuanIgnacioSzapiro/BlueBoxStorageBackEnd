@@ -28,8 +28,8 @@ public class ClienteS {
         actualizado.setTelefono(modelo.getTelefono());
         actualizado.setNombreUsuario(modelo.getNombreUsuario());
         actualizado.setClaveUsuario(modelo.getClaveUsuario());
-        actualizado.isCliente();
-        actualizado.isPendiente();
+        actualizado.setCliente(modelo.isCliente());
+        actualizado.setPendiente(modelo.isPendiente());
         actualizado.setDni(modelo.getDni());
         actualizado.setMail(modelo.getMail());
         repositorio.save(actualizado);
@@ -42,8 +42,8 @@ public class ClienteS {
         actualizado.setTelefono(modelo.getTelefono());
         actualizado.setNombreUsuario(modelo.getNombreUsuario());
         actualizado.setClaveUsuario(modelo.getClaveUsuario());
-        actualizado.isCliente();
-        actualizado.isPendiente();
+        actualizado.setCliente(modelo.isCliente());
+        actualizado.setPendiente(modelo.isPendiente());
         actualizado.setDni(modelo.getDni());
         actualizado.setMail(modelo.getMail());
         repositorio.save(actualizado);

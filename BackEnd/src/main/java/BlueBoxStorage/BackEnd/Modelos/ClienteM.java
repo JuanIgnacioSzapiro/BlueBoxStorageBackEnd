@@ -1,7 +1,6 @@
 package BlueBoxStorage.BackEnd.Modelos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "cliente")
-public class ClienteM extends UsuarioM{
+public class ClienteM extends UsuarioM {
     @Column (length = 20, unique = true)
     @Getter
     @Setter

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class ZonaC {
     @Autowired
     ZonaS servicio;
@@ -31,5 +32,10 @@ public class ZonaC {
     @DeleteMapping("/zonas/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
+    }
+
+    @GetMapping("/zonas/{id}")
+    public List<ZonaM> obtenerZonas(@PathVariable Long id){
+        return servicio.encontrarZonasXIdSucursal(id);
     }
 }

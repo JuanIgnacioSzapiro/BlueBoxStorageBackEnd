@@ -26,7 +26,7 @@ public class ContratoS {
         ContratoM actualizado = repositorio.findById(id).get();
         actualizado.setFechaInicio(modelo.getFechaInicio());
         actualizado.setFechaTerminacion(modelo.getFechaTerminacion());
-        actualizado.setIdCliente(modelo.getIdCliente());
+        actualizado.setIdUsuario(modelo.getIdUsuario());
         actualizado.setIdDeposito(modelo.getIdDeposito());
         actualizado.setAprobado(modelo.getAprobado());
         repositorio.save(actualizado);
