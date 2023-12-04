@@ -10,4 +10,15 @@ import java.util.List;
 
 @Repository
 public interface DepositoR extends JpaRepository<DepositoM, Long>{
+    @Query(
+            value="SELECT deposito.* FROM deposito INNER JOIN zona_depositos ON deposito.id_deposito = zona_depositos.id_depostio INNER JOIN zona ON zona_depositos.id_zona = zona.id_zona WHERE zona.id_zona = :idZona ;",
+            nativeQuery=true
+    )
+    List<DepositoM> obtenerXzona(@Param("idZona") Long idZona);
+
+    @Query(
+            value="SELECT * FROM deposito WHERE deposito.id_deposito = (SELECT MAX(deposito.id_deposito) FROM deposito) ;",
+            nativeQuery=true
+    )
+    DepositoM obtenerUltimoAgregado();
 }

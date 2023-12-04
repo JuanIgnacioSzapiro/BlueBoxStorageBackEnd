@@ -33,4 +33,12 @@ public class DepositoS {
     public void delete(@PathVariable Long id){
         repositorio.deleteById(id);
     }
+
+    public List<DepositoM> obtenerXzona(Long id) {
+        return repositorio.obtenerXzona(id);
+    }
+
+    public DepositoM obtenerUltimoAgregado() {
+        return repositorio.obtenerUltimoAgregado();
+    }
 }
