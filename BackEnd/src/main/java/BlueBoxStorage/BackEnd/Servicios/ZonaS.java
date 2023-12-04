@@ -18,7 +18,7 @@ public class ZonaS {
         return repositorio.findAll();
     }
 
-    public void set(@RequestBody ZonaM modelo){
+    public void set(ZonaM modelo){
         repositorio.save(modelo);
     }
 
@@ -33,7 +33,11 @@ public class ZonaS {
         repositorio.deleteById(id);
     }
 
-    public List<ZonaM> encontrarZonasXIdSucursal(@PathVariable Long id){
-        return repositorio.encontrarZonasXIdSucursal(id);
+    public List<ZonaM> obtenerXsucursal(Long id) {
+        return repositorio.obtenerXsucursal(id);
+    }
+
+    public ZonaM obtenerUltimoAgregado(){
+        return repositorio.obtenerUltimoAgregado();
     }
 }

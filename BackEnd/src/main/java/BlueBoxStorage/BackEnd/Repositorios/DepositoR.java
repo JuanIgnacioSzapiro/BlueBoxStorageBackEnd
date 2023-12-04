@@ -10,9 +10,4 @@ import java.util.List;
 
 @Repository
 public interface DepositoR extends JpaRepository<DepositoM, Long>{
-    @Query(
-            value="SELECT deposito.* FROM `deposito` INNER JOIN zona_depositos ON deposito.idDeposito = zona_depositos.idDeposito INNER JOIN zona ON zona_depositos.idZona = zona.idZona WHERE zona.idZona = :idZona",
-            nativeQuery=true
-    )
-    List<DepositoM> encontrarDepositosXIdZona(@Param("idZona") Long id);
 }

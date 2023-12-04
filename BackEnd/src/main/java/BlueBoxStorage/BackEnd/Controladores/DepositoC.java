@@ -35,8 +35,4 @@ public class DepositoC {
         servicio.delete(id);
     }
 
-    @GetMapping("/depositos/{id}")
-    public List<DepositoM> obtenerDepositos(@PathVariable Long id){
-        return servicio.encontrarDepositosXIdZona(id);
-    }
 }

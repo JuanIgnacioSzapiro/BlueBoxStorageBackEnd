@@ -1,9 +1,10 @@
 package BlueBoxStorage.BackEnd.Controladores;
 
+import BlueBoxStorage.BackEnd.Modelos.SucursalZonaM;
 import BlueBoxStorage.BackEnd.Modelos.ZonaM;
+import BlueBoxStorage.BackEnd.Servicios.SucursalZonaS;
 import BlueBoxStorage.BackEnd.Servicios.ZonaS;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,14 +15,21 @@ public class ZonaC {
     @Autowired
     ZonaS servicio;
 
+    @Autowired
+    SucursalZonaS servicioSucursalZonaS;
+
     @GetMapping("/zonas")
     public List<ZonaM> get(){
         return servicio.get();
     }
 
-    @PostMapping("/zonas")
-    public void post(@RequestBody ZonaM cuerpo){
+    @PostMapping("/zonas/{id}")
+    public void post(@PathVariable Long id, @RequestBody ZonaM cuerpo){
         servicio.set(cuerpo);
+        SucursalZonaM sucursalZonaM = new SucursalZonaM();
+        sucursalZonaM.setIdSucursal(id);
+        sucursalZonaM.setIdZona(servicio.obtenerUltimoAgregado().getIdZona());
+        servicioSucursalZonaS.set(sucursalZonaM);
     }
 
     @PutMapping("/zonas/{id}")
@@ -32,10 +40,12 @@ public class ZonaC {
     @DeleteMapping("/zonas/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
+        servicioSucursalZonaS.delete(id);
     }
 
     @GetMapping("/zonas/{id}")
-    public List<ZonaM> obtenerZonas(@PathVariable Long id){
-        return servicio.encontrarZonasXIdSucursal(id);
+    public List<ZonaM> obtenerXsucursal(@PathVariable Long id){
+        return servicio.obtenerXsucursal(id);
     }
+
 }

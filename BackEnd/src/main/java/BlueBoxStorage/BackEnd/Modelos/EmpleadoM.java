@@ -19,11 +19,6 @@ public class EmpleadoM extends UsuarioM{
     @Setter
     private String especialidad;
 
-    @Column (length = 20)
-    @Getter
-    @Setter
-    private Set<DepositoM> depositos;
-
     @Column(length = 20, name = "administrabilidad")
     @Getter
     @Setter
@@ -33,13 +28,6 @@ public class EmpleadoM extends UsuarioM{
     @Getter
     @Setter
     private boolean empleado;
-
-    @ManyToMany
-    @JoinTable(
-            name = "empleado_deposito",
-            joinColumns = {@JoinColumn(name = "idUsuario")},
-            inverseJoinColumns = {@JoinColumn(name = "idDeposito")}
-    )
 
     public boolean isAdministrador() {
         return administrador;

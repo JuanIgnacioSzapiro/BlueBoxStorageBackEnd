@@ -33,8 +33,4 @@ public class DepositoS {
     public void delete(@PathVariable Long id){
         repositorio.deleteById(id);
     }
-
-    public List<DepositoM> encontrarDepositosXIdZona(Long id) {
-        return repositorio.encontrarDepositosXIdZona(id);
-    }
 }
