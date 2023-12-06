@@ -1,7 +1,5 @@
 package BlueBoxStorage.BackEnd.Controladores;
 
-import BlueBoxStorage.BackEnd.Modelos.ClienteM;
-import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
 import BlueBoxStorage.BackEnd.Modelos.UsuarioNoAbstract;
 import BlueBoxStorage.BackEnd.Servicios.ClienteS;
 import BlueBoxStorage.BackEnd.Servicios.EmpleadoS;
@@ -9,64 +7,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class UsuarioC {
-
-    @Autowired
-    EmpleadoS servicioE;
     @Autowired
     ClienteS servicioC;
 
-    /*@GetMapping("/usuarios")
-    public List<UsuarioNoAbstract> get(){
-        UsuarioNoAbstract usuarioNoAbstract = new UsuarioNoAbstract();
-        List<UsuarioNoAbstract> totalUsuario = new ArrayList<>();
-        List<ClienteM> totalClientes = new ArrayList<>();
-        List<EmpleadoM> totalEmpleados = new ArrayList<>();
-        totalClientes.addAll(servicioC.get());
-        totalEmpleados.addAll(servicioE.get());
-        totalClientes.forEach(cliente->{
-            if(cliente.getIdUsuario()!=null){
-                usuarioNoAbstract.setIdUsuario(cliente.getIdUsuario());
-                usuarioNoAbstract.setClaveUsuario(cliente.getClaveUsuario());
-                usuarioNoAbstract.setNombreUsuario(cliente.getNombreUsuario());
-                usuarioNoAbstract.setNombre(cliente.getNombre());
-                usuarioNoAbstract.setDireccion(cliente.getDireccion());
-                usuarioNoAbstract.setTelefono(cliente.getTelefono());
-                totalUsuario.add(usuarioNoAbstract);
-            }
-        });
-        totalEmpleados.forEach(empleado->{
-            if(empleado.getIdUsuario()!=null){
-                usuarioNoAbstract.setIdUsuario(empleado.getIdUsuario());
-                usuarioNoAbstract.setClaveUsuario(empleado.getClaveUsuario());
-                usuarioNoAbstract.setNombreUsuario(empleado.getNombreUsuario());
-                usuarioNoAbstract.setNombre(empleado.getNombre());
-                usuarioNoAbstract.setDireccion(empleado.getDireccion());
-                usuarioNoAbstract.setTelefono(empleado.getTelefono());
-                totalUsuario.add(usuarioNoAbstract);
-            }
-            System.out.println("empleado: "+empleado.getIdUsuario());
-            totalUsuario.forEach(tot->{
-                System.out.println("\ttotalUsuario: "+tot.getIdUsuario());
-            });
-        });
+    @Autowired
+    EmpleadoS servicioE;
 
-        return totalUsuario;
-    }*/
+    @Autowired
+    UsuarioS servicioU;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UsuarioNoAbstract usuarioBuscado){
-        if(servicioE.encontrarXnombreUsuarioEmpleado(usuarioBuscado.getNombreUsuario()).getClaveUsuario().equals(usuarioBuscado.getClaveUsuario())){
-            return ResponseEntity.ok(servicioE.encontrarXnombreUsuarioEmpleado(usuarioBuscado.getNombreUsuario()));
-        }
-        else if(servicioC.encontrarXnombreUsuarioCliente(usuarioBuscado.getNombreUsuario()).getClaveUsuario().equals(usuarioBuscado.getClaveUsuario())) {
-            return ResponseEntity.ok(servicioC.encontrarXnombreUsuarioCliente(usuarioBuscado.getNombreUsuario()));
+        if(servicioU.encontrarXnombre_usuario(usuarioBuscado.getNombreUsuario()).getClaveUsuario().equals(usuarioBuscado.getClaveUsuario())){
+            return ResponseEntity.ok(servicioU.encontrarXnombre_usuario(usuarioBuscado.getNombreUsuario()));
         }
         return (ResponseEntity<?>) ResponseEntity.internalServerError();
+    }
+
+    @PostMapping("/usuario")
+    public <T> T obtenerTipo(@RequestBody UsuarioNoAbstract cuerpo){
+        String tipo = new String(servicioU.encontrarTipoXnombre(cuerpo.getNombreUsuario()));
+        if(tipo.equals("empleado")){
+            return (T) servicioE.encontrarXnombreUsuarioEmpleado(cuerpo.getNombreUsuario());
+        }
+        else if(tipo.equals("cliente")){
+            return (T) servicioC.encontrarXnombreUsuarioEmpleado(cuerpo.getNombreUsuario());
+        }
+        return null;
     }
 }

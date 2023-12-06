@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -54,6 +55,14 @@ public class ClienteS {
     }
 
     public ClienteM encontrarXnombreUsuarioCliente(String nombre_usuario){
+        return repositorio.findByNombreUsuario(nombre_usuario);
+    }
+
+    public Optional<ClienteM> encontrarXid(Long id) {
+        return repositorio.findById(id);
+    }
+
+    public ClienteM encontrarXnombreUsuarioEmpleado(String nombre_usuario) {
         return repositorio.findByNombreUsuario(nombre_usuario);
     }
 }
