@@ -1,8 +1,7 @@
 package BlueBoxStorage.BackEnd.Controladores;
 
 import BlueBoxStorage.BackEnd.Modelos.SucursalM;
-import BlueBoxStorage.BackEnd.Modelos.ZonaM;
-import BlueBoxStorage.BackEnd.Servicios.SucursalS;
+import BlueBoxStorage.BackEnd.Servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,10 @@ public class SucursalC {
     }
 
     @DeleteMapping("/sucursales/{id}")
-    public void delete(@PathVariable Long id){
-        servicio.delete(id);
+    public void delete(@PathVariable Long id){servicio.delete(id);}
+
+    @GetMapping("/sucursales/{id}")
+    public SucursalM obtenerSucursalPerteneciente(@PathVariable Long id){
+        return servicio.obtenerSucursalPerteneciente(id);
     }
 }

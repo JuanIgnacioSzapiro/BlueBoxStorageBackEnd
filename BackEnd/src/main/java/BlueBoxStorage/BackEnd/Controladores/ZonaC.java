@@ -40,7 +40,7 @@ public class ZonaC {
     @DeleteMapping("/zonas/{id}")
     public void delete(@PathVariable Long id){
         servicio.delete(id);
-        servicioSucursalZonaS.delete(id);
+        servicioSucursalZonaS.borrarXIdZona(id);
     }
 
     @GetMapping("/zonas/{id}")

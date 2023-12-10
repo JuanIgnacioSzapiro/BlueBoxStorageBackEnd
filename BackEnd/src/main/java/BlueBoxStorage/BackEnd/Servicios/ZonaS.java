@@ -14,6 +14,9 @@ public class ZonaS {
     @Autowired
     private ZonaR repositorio;
 
+    @Autowired
+    private ZonaDepositoS zonaDepositoS;
+
     public List<ZonaM> get(){
         return repositorio.findAll();
     }

@@ -1,7 +1,6 @@
 package BlueBoxStorage.BackEnd.Servicios;
 
 import BlueBoxStorage.BackEnd.Modelos.SucursalM;
-import BlueBoxStorage.BackEnd.Modelos.ZonaM;
 import BlueBoxStorage.BackEnd.Repositorios.SucursalR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,9 @@ import java.util.List;
 public class SucursalS {
     @Autowired
     private SucursalR repositorio;
+
+    @Autowired
+    SucursalZonaS sucursalZonaS;
 
     public List<SucursalM> get(){
         return repositorio.findAll();
@@ -30,7 +32,11 @@ public class SucursalS {
         repositorio.save(actualizado);
     }
 
-    public void delete(@PathVariable Long id){
-        repositorio.deleteById(id);
+    public void delete(@PathVariable Long id_sucursal){
+        repositorio.deleteById(id_sucursal);
+    }
+
+    public SucursalM obtenerSucursalPerteneciente(Long idZona){
+        return repositorio.obtenerSucursalPerteneciente(idZona);
     }
 }

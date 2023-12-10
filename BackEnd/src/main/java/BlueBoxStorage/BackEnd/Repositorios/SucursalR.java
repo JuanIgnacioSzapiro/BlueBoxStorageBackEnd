@@ -11,5 +11,9 @@ import java.util.List;
 
 @Repository
 public interface SucursalR extends JpaRepository<SucursalM, Long> {
-
+    @Query(
+            value="SELECT sucursal.* FROM sucursal INNER JOIN sucursal_zonas ON sucursal.id_sucursal = sucursal_zonas.id_sucursal INNER JOIN zona ON sucursal_zonas.id_zona = zona.id_zona WHERE zona.id_zona = :idZona ;",
+            nativeQuery=true
+    )
+    SucursalM obtenerSucursalPerteneciente(@Param("idZona") Long idZona);
 }

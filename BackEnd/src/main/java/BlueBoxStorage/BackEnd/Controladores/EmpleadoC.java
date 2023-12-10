@@ -33,4 +33,6 @@ public class EmpleadoC {
     public void delete(@PathVariable Long id){
         servicio.delete(id);
     }
+
+
 }

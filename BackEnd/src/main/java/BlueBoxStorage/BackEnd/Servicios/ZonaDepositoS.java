@@ -17,7 +17,5 @@ public class ZonaDepositoS {
         repositorio.save(modelo);
     }
 
-    public void delete(Long id) {
-        repositorio.borrarXIdDeposito(id);
-    }
+    public void delete(Long id) {repositorio.borrarXIdDeposito(id);}
 }
