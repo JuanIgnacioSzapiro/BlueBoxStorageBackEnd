@@ -8,12 +8,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity(name = "empleado_depostio")
-public class EmpleadoSucursalM {
+public class EmpleadoDepositoM {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private Long idEmpleadoSucursal;
+    private Long id_empleado_deposito;
 
     @Getter
     @Setter

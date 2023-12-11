@@ -1,6 +1,7 @@
 package BlueBoxStorage.BackEnd.Controladores;
 
 import BlueBoxStorage.BackEnd.Modelos.UsuarioNoAbstract;
+import BlueBoxStorage.BackEnd.Repositorios.UsuarioR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

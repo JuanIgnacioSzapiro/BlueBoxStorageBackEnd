@@ -1,4 +1,4 @@
-package BlueBoxStorage.BackEnd.Controladores;
+package BlueBoxStorage.BackEnd.Repositorios;
 
 import BlueBoxStorage.BackEnd.Modelos.UsuarioNoAbstract;
 import org.springframework.data.jpa.repository.JpaRepository;
