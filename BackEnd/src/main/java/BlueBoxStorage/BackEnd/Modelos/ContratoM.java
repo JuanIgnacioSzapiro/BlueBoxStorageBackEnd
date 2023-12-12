@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.text.DateFormat;
 
 @Entity(name = "contrato")
@@ -17,12 +18,12 @@ public class ContratoM {
     @Column
     @Getter
     @Setter
-    private DateFormat fechaInicio;
+    private Date fechaInicio;
 
     @Column
     @Getter
     @Setter
-    private DateFormat fechaTerminacion;
+    private Date fechaTerminacion;
 
     @Getter
     @Setter

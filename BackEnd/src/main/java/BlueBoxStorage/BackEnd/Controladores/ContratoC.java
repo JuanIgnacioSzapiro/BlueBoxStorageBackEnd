@@ -3,7 +3,6 @@ package BlueBoxStorage.BackEnd.Controladores;
 import BlueBoxStorage.BackEnd.Modelos.ContratoM;
 import BlueBoxStorage.BackEnd.Servicios.ContratoS;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +16,16 @@ public class ContratoC {
     @GetMapping("/contratos")
     public List<ContratoM> get(){
         return servicio.get();
+    }
+
+    @GetMapping("/contratos/{id}")
+    public List<ContratoM> obtenerDeIdCliente(@PathVariable Long id){
+        return servicio.obtenerDeIdCliente(id);
+    }
+
+    @GetMapping("/contratos_de_empleado/{id}")
+    public List<ContratoM> obtenerDeIdEmpleado(@PathVariable Long id){
+        return servicio.obtenerDeIdEmpleado(id);
     }
 
     @PostMapping("/contratos")

@@ -35,4 +35,12 @@ public class ContratoS {
     public void delete(@PathVariable Long id){
         repositorio.deleteById(id);
     }
+
+    public List<ContratoM> obtenerDeIdCliente(Long id_usuario) {
+        return repositorio.obtenerDeIdCliente(id_usuario);
+    }
+
+    public List<ContratoM> obtenerDeIdEmpleado(Long id_empleado) {
+        return repositorio.obtenerDeIdEmpleado(id_empleado);
+    }
 }
