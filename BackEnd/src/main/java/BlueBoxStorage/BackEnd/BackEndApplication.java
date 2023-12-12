@@ -1,5 +1,6 @@
 package BlueBoxStorage.BackEnd;
 
+import BlueBoxStorage.BackEnd.ManejoArchivos.Archivo;
 import BlueBoxStorage.BackEnd.Modelos.EmpleadoM;
 import BlueBoxStorage.BackEnd.Repositorios.EmpleadoR;
 import org.springframework.boot.CommandLineRunner;
@@ -17,9 +18,12 @@ public class BackEndApplication {
 	@Bean
 	CommandLineRunner runner(EmpleadoR empleadoR) {
 		return args -> {
+
+			Archivo archivo = new Archivo();
+
 			if (empleadoR.findByIdUsuario(Long.valueOf(1)).isPresent()) return;
 
-			EmpleadoM administradorCentralE = new EmpleadoM("admin", "admin", true, true);
+			EmpleadoM administradorCentralE = new EmpleadoM(archivo.Emplear().getNombreUsuario(), archivo.Emplear().getClaveUsuario(), true, true);
 
 			empleadoR.save(administradorCentralE);
 		};
