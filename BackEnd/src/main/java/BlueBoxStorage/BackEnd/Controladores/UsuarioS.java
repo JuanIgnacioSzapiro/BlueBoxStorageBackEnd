@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsuarioS {
 
-    @Autowired
+    @Autowired(required=false)
     private UsuarioR repositorio;
 
     public String encontrarTipoXnombre(String nombreUsuario) {

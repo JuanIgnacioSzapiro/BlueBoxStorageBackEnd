@@ -15,7 +15,7 @@ import java.util.Set;
 
 @Service
 public class ClienteS {
-    @Autowired
+    @Autowired(required=false)
     private ClienteR repositorio;
 
     public List<ClienteM> get(){
@@ -37,7 +37,7 @@ public class ClienteS {
     }
 
     public void update(@PathVariable Long id, @RequestBody ClienteM modelo){
-        ClienteM actualizado = repositorio.findById(id).get();
+        ClienteM actualizado = repositorio.findByIdUsuario(id);
         actualizado.setNombre(modelo.getNombre());
         actualizado.setDireccion(modelo.getDireccion());
         actualizado.setTelefono(modelo.getTelefono());
@@ -51,7 +51,7 @@ public class ClienteS {
     }
 
     public void delete(@PathVariable Long id){
-        repositorio.deleteById(id);
+        repositorio.deleteByIdUsuario(id);
     }
 
     public ClienteM encontrarXnombreUsuarioCliente(String nombre_usuario){

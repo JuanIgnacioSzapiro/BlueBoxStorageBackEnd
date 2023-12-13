@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class EmpleadoDepositoS {
-    @Autowired
+    @Autowired(required=false)
     private EmpleadoDepositoR repositorio;
 
     public List<EmpleadoDepositoM> get(Long id_usuario) {
@@ -21,6 +21,6 @@ public class EmpleadoDepositoS {
     }
 
     public void delete(Long id) {
-        repositorio.deleteById(id);
+        repositorio.deleteByIdEmpleadoDeposito(id);
     }
 }

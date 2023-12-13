@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Transactional
 public interface ZonaDepositoR extends JpaRepository<ZonaDepositoM, Long> {
     @Modifying
     @Transactional

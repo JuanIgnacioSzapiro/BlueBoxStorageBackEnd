@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class ContratoS {
-    @Autowired
+    @Autowired(required=false)
     private ContratoR repositorio;
 
     public List<ContratoM> get(){
@@ -23,7 +23,7 @@ public class ContratoS {
     }
 
     public void update(@PathVariable Long id, @RequestBody ContratoM modelo){
-        ContratoM actualizado = repositorio.findById(id).get();
+        ContratoM actualizado = repositorio.findByIdContrato(id);
         actualizado.setFechaInicio(modelo.getFechaInicio());
         actualizado.setFechaTerminacion(modelo.getFechaTerminacion());
         actualizado.setIdUsuario(modelo.getIdUsuario());
@@ -33,7 +33,7 @@ public class ContratoS {
     }
 
     public void delete(@PathVariable Long id){
-        repositorio.deleteById(id);
+        repositorio.deleteByIdContrato(id);
     }
 
     public List<ContratoM> obtenerDeIdCliente(Long id_usuario) {

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class SucursalZonaS {
-    @Autowired
+    @Autowired(required=false)
     private SucursalZonaR repositorio;
 
-    @Autowired
+    @Autowired(required=false)
     private ZonaS zonaS;
 
     public void set(SucursalZonaM modelo){

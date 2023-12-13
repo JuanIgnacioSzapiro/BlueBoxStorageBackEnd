@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class ZonaDepositoS {
-    @Autowired
+    @Autowired(required=false)
     private ZonaDepositoR repositorio;
 
     public void set(ZonaDepositoM modelo){

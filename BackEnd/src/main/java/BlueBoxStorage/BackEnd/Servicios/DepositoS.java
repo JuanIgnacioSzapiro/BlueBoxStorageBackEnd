@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class DepositoS {
-    @Autowired
+    @Autowired(required=false)
     private DepositoR repositorio;
 
     public List<DepositoM> get(){
@@ -24,14 +24,14 @@ public class DepositoS {
     }
 
     public void update(@PathVariable Long id, @RequestBody DepositoM modelo){
-        DepositoM actualizado = repositorio.findById(id).get();
+        DepositoM actualizado = repositorio.findByIdDeposito(id);
         actualizado.setVolumen(modelo.getVolumen());
         actualizado.setNumero(modelo.getNumero());
         repositorio.save(actualizado);
     }
 
     public void delete(@PathVariable Long id){
-        repositorio.deleteById(id);
+        repositorio.deleteByIdDeposito(id);
     }
 
     public List<DepositoM> obtenerXzona(Long id) {

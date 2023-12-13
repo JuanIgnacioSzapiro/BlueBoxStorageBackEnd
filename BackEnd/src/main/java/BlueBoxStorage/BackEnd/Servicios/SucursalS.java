@@ -11,10 +11,10 @@ import java.util.List;
 
 @Service
 public class SucursalS {
-    @Autowired
+    @Autowired(required=false)
     private SucursalR repositorio;
 
-    @Autowired
+    @Autowired(required=false)
     SucursalZonaS sucursalZonaS;
 
     public List<SucursalM> get(){
@@ -26,14 +26,14 @@ public class SucursalS {
     }
 
     public void update(@PathVariable Long id, @RequestBody SucursalM modelo){
-        SucursalM actualizado = repositorio.findById(id).get();
+        SucursalM actualizado = repositorio.findByIdSucursal(id);
         actualizado.setDireccion(modelo.getDireccion());
         actualizado.setTelefono(modelo.getTelefono());
         repositorio.save(actualizado);
     }
 
     public void delete(@PathVariable Long id_sucursal){
-        repositorio.deleteById(id_sucursal);
+        repositorio.deleteByIdSucursal(id_sucursal);
     }
 
     public SucursalM obtenerSucursalPerteneciente(Long idZona){

@@ -13,7 +13,7 @@ public class EmpleadoDepositoM {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private Long id_empleado_deposito;
+    private Long idEmpleadoDeposito;
 
     @Getter
     @Setter

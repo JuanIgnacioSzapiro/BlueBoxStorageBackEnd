@@ -11,10 +11,10 @@ import java.util.List;
 
 @Service
 public class ZonaS {
-    @Autowired
+    @Autowired(required=false)
     private ZonaR repositorio;
 
-    @Autowired
+    @Autowired(required=false)
     private ZonaDepositoS zonaDepositoS;
 
     public List<ZonaM> get(){
@@ -26,14 +26,14 @@ public class ZonaS {
     }
 
     public void update(@PathVariable Long id, @RequestBody ZonaM modelo){
-        ZonaM actualizado = repositorio.findById(id).get();
+        ZonaM actualizado = repositorio.findByIdZona(id);
         actualizado.setLetra(modelo.getLetra());
         actualizado.setTipo(modelo.getTipo());
         repositorio.save(actualizado);
     }
 
     public void delete(@PathVariable Long id){
-        repositorio.deleteById(id);
+        repositorio.deleteByIdZona(id);
     }
 
     public List<ZonaM> obtenerXsucursal(Long id) {

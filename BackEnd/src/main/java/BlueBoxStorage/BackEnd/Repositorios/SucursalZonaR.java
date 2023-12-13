@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Transactional
 public interface SucursalZonaR extends JpaRepository<SucursalZonaM, Long> {
     @Modifying
     @Transactional
